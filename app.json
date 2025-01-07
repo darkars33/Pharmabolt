@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Pharmabolt",
+    "slug": "Pharmabolt",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/pharmaboltLogo.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/pharmaboltLogo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#eeee"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.meethdavda.Pharmabolt"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.meethdavda.Pharmabolt"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
