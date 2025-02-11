@@ -4,6 +4,10 @@ import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
 import { SplashScreen as ExpoSplashScreen } from "expo-router";
 import SplashScreenComp from "@/components/SplashScreenComp";
+import  {store}  from "@/redux/Store";
+import { Provider } from "react-redux";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 export default function Layout() {
   const [splashVisible, setSplashVisible] = useState(true);
@@ -42,7 +46,7 @@ export default function Layout() {
     if (fontLoaded) {
       setTimeout(() => {
         setSplashVisible(false);
-        ExpoSplashScreen.hideAsync(); 
+        ExpoSplashScreen.hideAsync();
       }, 3000);
     }
   }, [fontLoaded, fontError]);
@@ -50,12 +54,24 @@ export default function Layout() {
   if (splashVisible) {
     return <SplashScreenComp />;
   }
-  
+
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="auth" options={{ headerShown: false }} />
-    </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <Provider store={store}>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="auth" options={{ headerShown: false }} />
+            <Stack.Screen name="category/[id]" />
+            <Stack.Screen name="productDetails/[id]" />
+            <Stack.Screen
+              name="trainDetails/[pnr]"
+              options={{ headerShown: false }}
+            />
+          </Stack>
+        </Provider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }

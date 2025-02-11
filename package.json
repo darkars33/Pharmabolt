@@ -14,10 +14,18 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@gorhom/bottom-sheet": "^5.0.6",
+    "@react-native-community/geolocation": "^3.4.0",
     "@react-navigation/native": "^7.0.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "@rnmapbox/maps": "^10.1.33",
+    "axios": "^1.7.9",
     "expo": "~52.0.20",
+    "expo-dev-client": "~5.0.9",
     "expo-font": "~13.0.2",
+    "expo-image-picker": "~16.0.4",
     "expo-linking": "~7.0.3",
+    "expo-location": "~18.0.5",
     "expo-router": "~4.0.14",
     "expo-splash-screen": "~0.29.18",
     "expo-status-bar": "~2.0.0",
@@ -30,10 +38,16 @@
     "react-native": "0.76.5",
     "react-native-animatable": "^1.4.0",
     "react-native-confirmation-code-field": "^7.4.0",
+    "react-native-date-picker": "^5.0.8",
+    "react-native-dropdown-picker": "^5.4.6",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-image-picker": "^7.2.3",
     "react-native-reanimated": "~3.16.1",
     "react-native-safe-area-context": "^4.12.0",
     "react-native-screens": "~4.1.0",
-    "react-native-web": "~0.19.13"
+    "react-native-web": "~0.19.13",
+    "react-redux": "^9.2.0",
+    "expo-secure-store": "~14.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -44,5 +58,18 @@
     "tailwindcss": "^3.4.17",
     "typescript": "~5.3.3"
   },
-  "private": true
+  "private": true,
+  "description": "1. Clone the repo.\r 2. npm install\r 3. npx expo prebuild\r 4. npx expo run:ios (for ios application)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/admirerr/pharmabolt-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/admirerr/pharmabolt-app/issues"
+  },
+  "homepage": "https://github.com/admirerr/pharmabolt-app#readme"
 }

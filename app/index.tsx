@@ -1,22 +1,39 @@
-import { useState } from "react";
-import { View, Text } from "react-native";
+import { useEffect, useState } from "react";
+import { View, ActivityIndicator } from "react-native";
 import React from "react";
 import { Redirect } from "expo-router";
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/Store";
+import { loadUserData } from "@/redux/UserSlice";
 
-const accountInfo = () => {
+const AccountInfo = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { flashKey } = useSelector((state: any) => state.user);
+  const [loading, setLoading] = useState(true);
 
-  const isLogged = false;
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        await dispatch(loadUserData()).unwrap();
+      } catch (error) {
+        console.log("Error loading user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if(!isLogged) {
-    return <Redirect href="/auth/login" />;
-  }else{
+    fetchUserData();
+  }, [dispatch]);
+
+  if (loading) {
     return (
-      <View>
-        <Text>Account Info</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="black" />
       </View>
     );
   }
-  
+
+  return flashKey ? <Redirect href="/home" /> : <Redirect href="/auth/login" />;
 };
 
-export default accountInfo;
+export default AccountInfo;

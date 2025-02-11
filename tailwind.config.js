@@ -6,7 +6,10 @@ module.exports = {
     extend: {
       colors: {
         primary: "#00BFB3",
-        MountainMist: "#8F9098"
+        MountainMist: "#8F9098",
+        AddToCart: "#DD5202",
+        White: "#FFFFFF",
+        Black: "#000000",
       },
       fontFamily: {
         pthin: ["Roboto-Thin", "sans-serif"],

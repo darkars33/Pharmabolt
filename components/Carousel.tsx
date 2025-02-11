@@ -7,6 +7,7 @@ import {
   Dimensions,
   StyleSheet,
 } from "react-native";
+import Slider from "@/assets/images/Slider.png";
 
 const { width } = Dimensions.get("window");
 
@@ -15,9 +16,9 @@ const Carousel = () => {
   const flatListRef = useRef(null);
 
   const data = [
-    { id: "1", image: "https://via.placeholder.com/350x150" },
-    { id: "2", image: "https://via.placeholder.com/350x150" },
-    { id: "3", image: "https://via.placeholder.com/350x150" },
+    { id: "1", image: Slider, isLocal: true },
+    { id: "2", image: "https://via.placeholder.com/350x150", isLocal: false },
+    { id: "3", image: "https://via.placeholder.com/350x150", isLocal: false },
   ];
 
   const onScroll = (event: any) => {
@@ -25,10 +26,12 @@ const Carousel = () => {
     setCurrentIndex(index);
   };
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: { id: string; image: any; isLocal: boolean } }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-      <Text style={styles.title}>{item.title}</Text>
+      <Image
+        source={item.isLocal ? item.image : { uri: item.image }}
+        style={styles.image}
+      />
     </View>
   );
 
@@ -44,8 +47,6 @@ const Carousel = () => {
         onScroll={onScroll}
         renderItem={renderItem}
       />
-
-      {/* Pagination */}
       <View style={styles.pagination}>
         {data.map((_, index) => (
           <View
@@ -71,13 +72,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: width * 0.9,
-    height: 150,
+    height: 140,
     borderRadius: 10,
-  },
-  title: {
-    marginTop: 10,
-    fontSize: 18,
-    fontWeight: "bold",
   },
   pagination: {
     flexDirection: "row",
